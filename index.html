@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        textarea {
+        resize: none;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script src="storeToFirebase.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 p-5" id="createToDoList">
+                <h3>Create To Do List</h3>
+                <!-- <div class="form-group">
+                    <label for="">ID</label>
+                    <input type="text" class="form-control" id="tID" readonly>
+                </div> -->
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="tName">
+                </div>
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea name="" id="tDesc" class="form-control" cols="30" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="">End Date</label>
+                    <input type="date" class="form-control" id="eDate">
+                </div> 
+                <div class="form-group">
+                    <input type="button" value="Add" class="btn btn-primary" onclick="addTask()">
+                </div>  
+            </div>
+            <div class="col-lg-6 p-5">
+                <h3>View To Do List</h3>
+                <div class="form-inline m-2">
+                    <input type="text" id="search" placeholder="Search" class="form-control mr-2">
+                    <select id="seachBasedOn" class="form-control mr-2">
+                        <option value="taskName">Name</option>
+                        <option value="taskDate">Date</option>
+                        <option value="taskDesc">Description</option>
+
+                    </select>
+                    <input type="button" value="Search" onclick="searchFromList()" class="btn btn-warning">
+                </div>
+                <div id="viewToDoList" class="border">
+
+                </div>
+                <input type="button" value="Save to DB" class="btn btn-success mt-2" onclick="sendToFireBase()">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
