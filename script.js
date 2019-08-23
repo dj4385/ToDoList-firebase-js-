@@ -116,6 +116,10 @@
         })
 
     }
+    function updateItem() {
+        // let updateListItem = editTask()
+        firebaseDB.addToDB(updateListItem)
+    }
     function deleteTask(){
         var taskID = this.getAttribute('task-del')
         taskArr.forEach( ele => {
@@ -133,14 +137,36 @@
     function searchFromList(){
         var sBoxValue = document.getElementById('search').value
         var ddList = document.getElementById('seachBasedOn').value
-        if(sBoxValue != ""){
-            taskArr.forEach(ele=>{
-                if(sBoxValue == ele.taskName){
-                    printTaskList(ele)
-                } 
-            })
-        }else {
-            alert("Empty Search box")
+        if(ddList == "taskName"){
+            if(sBoxValue != ""){
+                taskArr.forEach(ele=>{
+                    if(sBoxValue == ele.taskName){
+                        printTaskList(ele)
+                    } 
+                })
+            }else {
+                alert("Empty Search box")
+            }
+        } else if(ddList == "taskDate"){
+            if(sBoxValue != ""){
+                taskArr.forEach(ele=>{
+                    if(sBoxValue == ele.endDate){
+                        printTaskList(ele)
+                    } 
+                })
+            }else {
+                alert("Empty Search box")
+            }
+        } else if(ddList == "taskDesc"){
+            if(sBoxValue != ""){
+                taskArr.forEach(ele=>{
+                    if(sBoxValue == ele.desc){
+                        printTaskList(ele)
+                    } 
+                })
+            }else {
+                alert("Empty Search box")
+            }
         }
     }
 

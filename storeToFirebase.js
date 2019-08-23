@@ -1,15 +1,27 @@
 const firebaseDB = {
     addToDB: (listArr)=>{
-        listArr.forEach(ele => {
-            var add = firebase.database().ref('todolist-6df03/'+ele.taskName).set(ele)
+        if(typeof(listArr) == Array){
+            listArr.forEach(ele => {
+                var add = firebase.database().ref('todolist-6df03/'+ele.taskName).set(ele)
+                add.then(
+                    data=>{
+                        alert("Data add to firebase")
+                    }
+                ).catch(
+                    err=>alert("Error"+err)
+                )    
+            });
+        } else {
+            var add = firebase.database().ref('todolist-6df03/'+listArr.taskName).set(listArr)
             add.then(
                 data=>{
                     alert("Data add to firebase")
                 }
             ).catch(
                 err=>alert("Error"+err)
-            )    
-        });
+            )  
+        }
+        
         
     },
     displayToDoList : ()=>{
